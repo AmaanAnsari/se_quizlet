@@ -5,31 +5,44 @@ from tinydb import TinyDB, Query
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.encoders import jsonable_encoder
+import json
 
 db = TinyDB('/data/db.json')
 
 app = FastAPI()
 
 class User(BaseModel):
-    user_id : str
     user_name: str
     user_password: str
     user_scores: dict
 
-@app.post("/insert/", status_code=200)
+class Authentication(BaseModel):
+    user_name: str
+    user_password: str
+
+@app.post("/user/signup", status_code=200)
 def db_insert(pUser: User):
     res = db.insert(jsonable_encoder(pUser))
     return "none"
 
-@app.get("/search-by/user_name/{name}")
-def db_searchByUsername():
+@app.post("/user/login", status_code=200)
+def db_insert(pAuth: Authentication):
     Fruit = Query()
-    return db.search(Fruit.user_name == name)
+    for pE in db.search(Fruit.user_name == pAuth.user_name):
+        if pE["user_password"] == pAuth.user_password:
+            return "true"
+        return "false"
 
-@app.get("/search-by/user_id/{id}")
-def db_searchByUsername():
+@app.get("/user/get/scores/{name}")
+def db_getScores():
     Fruit = Query()
-    return db.search(Fruit.user_id == id)
+    for pE in db.search(Fruit.user_name == name)
+        return pE[user_scores]
+
+# @app.get("/search-by/user_id/{id}")
+# def db_searchByUsername():
+#     Fruit = Query()
+#     return db.search(Fruit.user_id == id)
 
 @app.get("/ready-probe")
 def compile_code():
