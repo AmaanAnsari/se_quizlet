@@ -6,7 +6,7 @@ from fastapi import Request, FastAPI
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from starlette.responses import RedirectResponse
-import requests
+import requests_async as requests
 
 URL_COMPILER_PYTHON = "http://pythoncompiler:7999/compile-code/"
 
@@ -37,7 +37,7 @@ async def check_syntax(request: Request, language: str):
     # return answer.content
     #return RedirectResponse(url=URL_COMPILER_PYTHON)
     json_data = await request.body()
-    resp = requests.post(URL_COMPILER_PYTHON, data=json_data)
+    resp = await requests.post(URL_COMPILER_PYTHON, data=json_data)
     return resp.json()
 
 
