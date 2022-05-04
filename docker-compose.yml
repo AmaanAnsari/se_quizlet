@@ -1,0 +1,26 @@
+services:
+  webapp:
+    
+    build: 
+      context: ./webapp
+      
+    ports:
+      - "8000:8000"
+    networks:
+      - frontend_network
+      - backend_network
+
+  pythoncompiler:
+    build: 
+      context: ./compiler_python
+    expose:
+      - "7999"
+    networks:
+      - backend_network
+
+networks:
+  frontend_network:
+    driver: bridge
+  
+  backend_network:
+    driver: bridge
