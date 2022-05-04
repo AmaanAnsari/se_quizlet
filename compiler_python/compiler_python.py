@@ -1,6 +1,7 @@
 # inside of a Python .py file
 
 import uvicorn
+import traceback
 
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -14,13 +15,43 @@ app = FastAPI()
 
 @app.post("/compile-code")
 def compile_code(pData : CheckSyntaxData):
-    # // Compile Code
-    return pData.user_id
+    error_msg = ""
+    
+    try:
+        codeObejct = compile(pData.user_code, "<string>", 'exec')
+    except Exception:
+        error_msg = traceback.format_exc()
+    
+    return { 
+        "result_type" : "compile",
+        "sucessfull" : error_msg == "",
+        "error_message": error_msg,
+        "checked_user_code" : pData.user_code
+    }
 
-@app.get("/compile-codeB")
+@app.post("/execute-code")
+def execute_code(pData : CheckSyntaxData):
+    error_msg = ""
+    resultB = ""
+    user_code = pData.user_code
+    try:
+        codeObejct = compile(user_code, "<string>", 'exec')
+        resultB = exec(codeObejct)
+    except Exception:
+        error_msg = traceback.format_exc()
+    
+    return { 
+        "result_type" : "execute",
+        "sucessfull" : error_msg == "",
+        "result" : str(resultB),
+        "error_message": error_msg,
+        "checked_user_code" : user_code
+    }
+
+@app.get("/ready-probe")
 def compile_code():
     # // Compile Code
-    return {"Hat funktioniert"}
+    return {"is ready"}
 
 if __name__ == "__main__":
 

@@ -8,7 +8,7 @@ from pydantic import BaseModel
 from starlette.responses import RedirectResponse
 import requests_async as requests
 
-URL_COMPILER_PYTHON = "http://pythoncompiler:7999/compile-code/"
+URL_COMPILER_PYTHON = "http://pythoncompiler:7999"
 
 teams=[]
 app = FastAPI()
@@ -26,20 +26,18 @@ def home():
 
 @app.post("/user-check-syntax/{language}")
 async def check_syntax(request: Request, language: str):
-    
-    # body = request.body()
-    # print(body)
-    # if language == 'python':
-    #     answer = requests.post(URL_COMPILER_PYTHON, data=body)
-    
-    # # res = requests.get(URL_COMPILER_PYTHON)
-    # # return answer
-    # return answer.content
-    #return RedirectResponse(url=URL_COMPILER_PYTHON)
-    json_data = await request.body()
-    resp = await requests.post(URL_COMPILER_PYTHON, data=json_data)
-    return resp.json()
+    if language == "python":
+        json_data = await request.body()
+        resp = await requests.post(URL_COMPILER_PYTHON + "/compile-code/", data=json_data)
+        return resp.json()
+    return "Wrong language"
 
+@app.post("/user-execute-code/{language}")
+async def check_syntax(request: Request, language: str):
+    if language == "python":
+        json_data = await request.body()
+        resp = await requests.post(URL_COMPILER_PYTHON + "/execute-code/", data=json_data)
+        return resp.json()
 
 if __name__ == "__main__":
 

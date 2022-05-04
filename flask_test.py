@@ -1,8 +1,15 @@
-from flask import Flask
 
-app = Flask(__name__)
+import traceback
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+codeInString = 'a = 5\nb=6\nsum=a+b\nprint("sum =",sum)'
+global b
+b = ""
+try:
+    codeObejct = compile(codeInString, 'sumstring', 'exec')
+    c = eval(codeObejct)
+except Exception:
+    print(traceback.format_exc())
 
+print("Baumhaus")
+
+print(c)
