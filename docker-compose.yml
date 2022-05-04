@@ -18,6 +18,16 @@ services:
     networks:
       - backend_network
 
+  db:
+    build: 
+      context: ./db
+    ports:
+      - "7998:7998"
+    networks:
+      - backend_network
+    volumes:
+      - "./data:/data:rw"
+
 networks:
   frontend_network:
     driver: bridge
