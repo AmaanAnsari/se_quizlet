@@ -36,7 +36,9 @@ def execute_code(pData : CheckSyntaxData):
     user_code = pData.user_code
     try:
         codeObejct = compile(user_code, "<string>", 'exec')
-        resultB = exec(codeObejct)
+        exec(codeObejct)
+        f = open("output.txt", "r")
+        resultB = f.read()
     except Exception:
         error_msg = traceback.format_exc()
     
