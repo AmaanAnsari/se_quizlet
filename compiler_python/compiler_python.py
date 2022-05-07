@@ -40,15 +40,17 @@ def execute_code(pData : CheckSyntaxData):
     resDict = {}
     try:
         
-        webapp_path = "/home/ubuntu/se_quizlet/webapp"
-        riddles_path = "/home/ubuntu/se_quizlet/webapp/riddles"
+        # webapp_path = "/"
+        # riddles_path = "/riddles/"
 
-        os.popen('cp ' + riddles_path + "/" + pData.riddle_id + "/input.txt " + webapp_path + "/input.txt") 
+        # os.popen('cp ' + riddles_path + pData.riddle_id + "/input.txt " + webapp_path + "/input.txt") 
         
         codeObejct = compile(user_code, "<string>", 'exec')
         exec(codeObejct)
 
-        solution = open(riddles_path + "/" + pData.riddle_id + "/solution.txt", "r")
+        #filename = os.path.join(os.path.dirname(__file__), "solution-" + pData.riddle_id + ".txt")
+        filename = "/root/root/code/solution-1.txt"
+        solution = open(filename, "r")
         user = open("output.txt", "r")
         count = 0
         

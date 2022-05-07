@@ -1,5 +1,5 @@
 # inside of a Python .py file
-
+from typing import Optional
 import uvicorn
 from tinydb import TinyDB, Query
 from fastapi import FastAPI
@@ -14,7 +14,7 @@ app = FastAPI()
 class User(BaseModel):
     user_name: str
     user_password: str
-    user_scores: dict
+    user_scores: Optional[dict] = {}
 
 class Authentication(BaseModel):
     user_name: str

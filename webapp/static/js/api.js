@@ -86,3 +86,27 @@ function post_test_code() {
         riddle_id : riddle_id
     }));
 }
+
+function post_user_db() {
+    console.log("ausgeführt")
+    return
+    user_name = document.getElementById("input_email").value;
+    console.log("User entered: " +  user_name);
+    user_password = document.getElementById("input_password").value;
+    console.log("User choose: " + user_password)
+    
+    url = window.location.hostname + ":7998" + "/user/login"
+    console.log("url: " + url)
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload  = function() {
+        var jsonResponse = JSON.parse(xhr.responseText);
+        console.log(jsonResponse)
+     };
+    xhr.send(JSON.stringify({
+        user_name : user_name,
+        user_password : user_password
+    }));
+}
+
