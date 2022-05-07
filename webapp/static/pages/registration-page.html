@@ -1,0 +1,28 @@
+
+
+
+<link href="../css/login.css" rel="stylesheet" />
+
+
+<div class="registration-page">
+     <div class="form">
+    <form class="registration-form">
+      <p class= registration-header>
+        <strong>Registration</strong>
+      </p>
+      <input type="text" placeholder="Username"/>
+      <input type="text" placeholder="E-Mail"/>
+      <input type="password" placeholder="Password"/>
+      <button>create</button>
+      <p class="message">Already registered? <a href="../pages/login-page.html">Login</a></p>
+    </form>
+    </div>
+</div>
+
+
+
+<script>
+    $('.message a').click(function(){
+       $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+    });
+</script>

@@ -12,7 +12,7 @@ template: `
                             <li class="nav-item"><a class="nav-link" href="#references">References</a></li>
                             <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                             <li class="nav-item"><a class="nav-link active" href="../static/pages/login-page.html">Login</a></li>
-                            <li class="nav-item"><a class="nav-link active" href="">Register</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="../static/pages/registration-page.html">Register</a></li>
 
 </ul>
                     </div>
