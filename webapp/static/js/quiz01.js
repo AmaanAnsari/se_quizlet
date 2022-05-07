@@ -37,7 +37,7 @@ Vue.component('question-description', {
 template: `
 <div>
     <p>
-        <strong>Loops</strong>
+        <strong id="riddle-headline" data-riddle-id="1">Loops</strong>
     </p>
     <p>
         In this challenge, we're going to use loops to help us do some simple math.

@@ -68,6 +68,7 @@ function post_test_code() {
     language = document.getElementById("language").value;
     url = "/user-execute-code/" + language
     console.log("User choose: " + url)
+    riddle_id = document.getElementById("riddle-headline").getAttribute("data-riddle-id")
     
     responseView = document.getElementById("response");
     if (language == "invalid") responseView.value = "You forgot to choose your programming language"
@@ -77,16 +78,11 @@ function post_test_code() {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload  = function() {
         var jsonResponse = JSON.parse(xhr.responseText);
-        responseView = document.getElementById("response");
-        if (jsonResponse["successful"] == true) {
-            responseView.value = "Congrats your code executs smoothly. Press submit to check whether it passes the test cases.";
-        }
-        else {
-            responseView.value = jsonResponse["error_message"];
-        }
+        console.log(jsonResponse)
      };
     xhr.send(JSON.stringify({
         user_id : user_id,
-        user_code : user_code
+        user_code : user_code,
+        riddle_id : riddle_id
     }));
 }

@@ -4,13 +4,14 @@ import uvicorn
 import traceback
 import os
 
+from typing import Optional
 from fastapi import FastAPI
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 class CheckSyntaxData(BaseModel):
     user_id : str
     user_code: str
-    riddle_folder_name: Optional[str]
+    riddle_id : Optional[str]
 
 teams=[]
 app = FastAPI()
@@ -39,18 +40,15 @@ def execute_code(pData : CheckSyntaxData):
     resDict = {}
     try:
         
-        dirname = os.path.dirname(__file__)
-        new = os.path.join(dirname, '/userenv/')
-        os.mkdir(new)
+        webapp_path = "/home/ubuntu/se_quizlet/webapp"
+        riddles_path = "/home/ubuntu/se_quizlet/webapp/riddles"
 
-        os.
-
-        """ codeObejct = compile(user_code, "<string>", 'exec')
+        os.popen('cp ' + riddles_path + "/" + pData.riddle_id + "/input.txt " + webapp_path + "/input.txt") 
+        
+        codeObejct = compile(user_code, "<string>", 'exec')
         exec(codeObejct)
 
-        solution_path = "riddles\\" + pData.riddle_folder_name + "\\" +  "solution.txt"
-        
-        solution = open(solution_path, "r")
+        solution = open(riddles_path + "/" + pData.riddle_id + "/solution.txt", "r")
         user = open("output.txt", "r")
         count = 0
         
@@ -67,7 +65,7 @@ def execute_code(pData : CheckSyntaxData):
 
 
             if not solution_line and not user_line:
-                break """
+                break
 
     except Exception:
         error_msg = traceback.format_exc()

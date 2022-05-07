@@ -80,7 +80,7 @@ template: `
 Vue.component('submit-button', {
 template: `
   <div class="top-row"
-	  <button type="button" class="btn btn-success" id="submit-btn" onclick="post_check_code();">Submit Code</button>
+	  <button type="button" class="btn btn-success" id="submit-btn" onclick="post_test_code();">Submit Code</button>
 	</div>
 `})
 
