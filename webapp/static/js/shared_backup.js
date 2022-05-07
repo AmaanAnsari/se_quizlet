@@ -120,7 +120,7 @@ Vue.component('form-textarea', {
 template:
 `
 <div class="form-group">
-    <textarea class="form-control" id="message" rows="20" type="text" placeholder="Enter your message here..."></textarea>
+    <textarea class="form-control" id="message" rows="20" type="text" placeholder="Enter your code here..."></textarea>
 </div>
 `
 })

@@ -641,7 +641,7 @@ progress {
   margin-left: auto;
 }
 
-@media (min-width: 576px) {
+/* @media (min-width: 576px) {
   .container-sm, .container {
     max-width: 540px;
   }
@@ -665,7 +665,39 @@ progress {
   .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
     max-width: 1320px;
   }
+} */
+
+
+
+
+@media (min-width: 576px) {
+  .container-sm {
+    max-width: 540px;
+  }
 }
+@media (min-width: 768px) {
+  .container-md, .container-sm,{
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container-lg, .container-md, .container-sm{
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container-xl, .container-lg, .container-md, .container-sm{
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm{
+    max-width: 1320px;
+  }
+}
+
+
+
 .row {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
@@ -1328,7 +1360,7 @@ progress {
     width: auto;
   }
 
-  .row-cols-lg-1 > * {
+ .row-cols-lg-1 > * {
     flex: 0 0 auto;
     width: 100%;
   }
@@ -11455,4 +11487,62 @@ header.masthead h1, header.masthead .h1 {
 }
 #portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption, #portfolio .container-sm .portfolio-box:hover .portfolio-box-caption, #portfolio .container-md .portfolio-box:hover .portfolio-box-caption, #portfolio .container-lg .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xl .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xxl .portfolio-box:hover .portfolio-box-caption {
   opacity: 1;
+}
+
+
+
+
+.col-md-5 .bg-light{
+    padding: 0.5em;
+    height: 100%;
+}
+
+.col-md-4 .container{
+    padding: 0em;
+    height: 100%;
+}
+
+.col-md-3 .bg-light{
+    height: 100%;
+}
+
+.navbar{
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.px-lg-5{
+    padding-left: calc(var(--bs-gutter-x) * 0.5) !important;
+    padding-right: calc(var(--bs-gutter-x) * 0.5) !important;
+
+    margin-left: calc(var(--bs-gutter-x) * 0.5);
+    margin-right: calc(var(--bs-gutter-x) * 0.5);
+}
+
+/* .container aus @media... max.width Anweisungen entfernt */
+
+@media (min-width: 1200px) {
+    #app{
+        margin: 12px;
+    }
+    .navbar{
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+
+.rows{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+
+.pb-3{
+    margin-left: 23.5%;
+}
+
+.run-button{
+    margin-left: 6.5%;
 }

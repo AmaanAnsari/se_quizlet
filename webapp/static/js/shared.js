@@ -13,7 +13,7 @@ template: `
                             <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                             <li class="nav-item"><a class="nav-link active" href="">Login</a></li>
                             <li class="nav-item"><a class="nav-link active" href="">Register</a></li>
-			
+
 </ul>
                     </div>
                 </div>
@@ -122,7 +122,7 @@ Vue.component('form-textarea', {
 template:
 `
 <div class="form-group">
-    <textarea class="form-control" id="message" rows="20" type="text" placeholder="Enter your message here..."></textarea>
+    <textarea class="form-control" id="message" rows=20 type="text" placeholder="Enter your code here..."></textarea>
 </div>
 `
 })
