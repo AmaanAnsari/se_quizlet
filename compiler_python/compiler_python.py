@@ -24,7 +24,7 @@ def compile_code(pData : CheckSyntaxData):
     
     return { 
         "result_type" : "compile",
-        "sucessfull" : error_msg == "",
+        "successful" : error_msg == "",
         "error_message": error_msg,
         "checked_user_code" : pData.user_code
     }
@@ -44,7 +44,7 @@ def execute_code(pData : CheckSyntaxData):
     
     return { 
         "result_type" : "execute",
-        "sucessfull" : error_msg == "",
+        "successful" : error_msg == "",
         "result" : str(resultB),
         "error_message": error_msg,
         "checked_user_code" : user_code
