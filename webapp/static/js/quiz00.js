@@ -69,7 +69,7 @@ Vue.component('next-button', {
 template: `
     <div class="top-row"
 
-        <button type="button" class="btn btn-outline-success" onclick="send_post()">Next Question</button>
+        <button type="button" class="btn btn-outline-success" data-url="test.com" onclick="send_post_with_this(this)">Next Question</button>
 	</div>
 `})
 

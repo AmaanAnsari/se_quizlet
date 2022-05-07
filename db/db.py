@@ -36,7 +36,7 @@ def db_insert(pAuth: Authentication):
 @app.get("/user/get/scores/{name}")
 def db_getScores():
     Fruit = Query()
-    for pE in db.search(Fruit.user_name == name)
+    for pE in db.search(Fruit.user_name == name):
         return pE[user_scores]
 
 # @app.get("/search-by/user_id/{id}")

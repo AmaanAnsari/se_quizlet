@@ -19,9 +19,9 @@ app.mount("/static", StaticFiles(directory="static", html = True), name="static"
 #     user_id : str
 #     user_code: str
 
-@app.get("/t")
+@app.get("/")
 def home():
-     return "Hello World"
+     return "Welcome, go to /static to see the real thing :D"
      requests.post()
 
 @app.post("/user-check-syntax/{language}")

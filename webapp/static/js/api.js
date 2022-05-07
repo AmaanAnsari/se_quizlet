@@ -1,3 +1,8 @@
+
+window.onload = function() {
+    //yourFunction(param1, param2);
+  };
+
 function next_question() {
     var d = document.getElementById("questionPane");
     console.log(d)
@@ -7,7 +12,7 @@ function next_question() {
 }
 
 function send_post() {
-    url = "https://httpbin.org/post"
+    url = "/user/login"
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -16,6 +21,12 @@ function send_post() {
         console.log(jsonResponse)
      };
     xhr.send(JSON.stringify({
-        value: "value"
+        user_name: "Mondbaum",
+        user_password: "pass"
     }));
+}
+
+function send_post_with_this(pBtn) {
+    url_name = pBtn.getAttribute("data-url");
+    console.log(url_name)
 }
