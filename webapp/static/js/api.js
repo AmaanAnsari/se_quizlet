@@ -30,3 +30,83 @@ function send_post_with_this(pBtn) {
     url_name = pBtn.getAttribute("data-url");
     console.log(url_name)
 }
+
+function post_check_code() {
+    user_id = "none";
+    user_code = document.getElementById("user-code").value;
+    console.log("User entered: " +  user_code);
+    language = document.getElementById("language").value;
+    url = "/user-check-syntax/" + language
+    console.log("User choose: " + url)
+    
+    responseView = document.getElementById("response");
+    if (language == "invalid") responseView.value = "You forgot to choose your programming language"
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload  = function() {
+        var jsonResponse = JSON.parse(xhr.responseText);
+        responseView = document.getElementById("response");
+        if (jsonResponse["successful"] == true) {
+            responseView.value = "Congrats your code executs smoothly. Press submit to check whether it passes the test cases.";
+        }
+        else {
+            responseView.value = jsonResponse["error_message"];
+        }
+     };
+    xhr.send(JSON.stringify({
+        user_id : user_id,
+        user_code : user_code
+    }));
+}
+
+function post_test_code() {
+    user_id = "none";
+    user_code = document.getElementById("user-code").value;
+    console.log("User entered: " +  user_code);
+    language = document.getElementById("language").value;
+    url = "/user-execute-code/" + language
+    console.log("User choose: " + url)
+    riddle_id = document.getElementById("riddle-headline").getAttribute("data-riddle-id")
+    
+    responseView = document.getElementById("response");
+    if (language == "invalid") responseView.value = "You forgot to choose your programming language"
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload  = function() {
+        var jsonResponse = JSON.parse(xhr.responseText);
+        console.log(jsonResponse)
+     };
+    xhr.send(JSON.stringify({
+        user_id : user_id,
+        user_code : user_code,
+        riddle_id : riddle_id
+    }));
+}
+
+function post_user_db() {
+    console.log("ausgeführt")
+    return
+    user_name = document.getElementById("input_email").value;
+    console.log("User entered: " +  user_name);
+    user_password = document.getElementById("input_password").value;
+    console.log("User choose: " + user_password)
+    
+    url = window.location.hostname + ":7998" + "/user/login"
+    console.log("url: " + url)
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload  = function() {
+        var jsonResponse = JSON.parse(xhr.responseText);
+        console.log(jsonResponse)
+     };
+    xhr.send(JSON.stringify({
+        user_name : user_name,
+        user_password : user_password
+    }));
+}
+

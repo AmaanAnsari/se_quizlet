@@ -118,14 +118,33 @@ template:
 `
 })
 
-Vue.component('form-textarea', {
+Vue.component('form-textarea-code', {
 template:
 `
 <div class="form-group">
-    <textarea class="form-control" id="message" rows=20 type="text" placeholder="Enter your code here..."></textarea>
+    <textarea class="form-control" id="user-code" rows=20 type="text" placeholder="Enter your code here..."></textarea>
 </div>
 `
 })
+
+
+Vue.component('form-textarea-response', {
+    template:
+    `
+    <div class="form-group">
+        <textarea readonly class="form-control" id="response" rows=10 type="text" placeholder="Enter your code here..."></textarea>
+    </div>
+    `
+    })
+
+Vue.component('form-textarea', {
+    template:
+    `
+    <div class="form-group">
+        <textarea class="form-control" id="message" rows=20 type="text" placeholder="Enter your code here..."></textarea>
+    </div>
+    `
+    })
 
 Vue.component('form-success', {
 template:
