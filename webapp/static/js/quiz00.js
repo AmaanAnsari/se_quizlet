@@ -51,8 +51,8 @@ Vue.component('language-selection', {
 template: `
     <form>
       <select id="language" class="dropdown">
-        <option value="invalid">Select Programming Language</option>
-        <option value="python">Python3</option>
+        <option value="invalid">Select Programming Language ...</option>
+        <option value="python" selected="selected">Python3</option>
         <option value="javascript">JavaScript</option>
       </select>
     </form>

@@ -39,6 +39,9 @@ function post_check_code() {
     url = "/user-check-syntax/" + language
     console.log("User choose: " + url)
     
+    responseView = document.getElementById("response");
+    if (language == "invalid") responseView.value = "You forgot to choose your programming language"
+
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -58,17 +61,32 @@ function post_check_code() {
     }));
 }
 
-function post_run_code() {
-    url = "/user/login"
+function post_test_code() {
+    user_id = "none";
+    user_code = document.getElementById("user-code").value;
+    console.log("User entered: " +  user_code);
+    language = document.getElementById("language").value;
+    url = "/user-execute-code/" + language
+    console.log("User choose: " + url)
+    
+    responseView = document.getElementById("response");
+    if (language == "invalid") responseView.value = "You forgot to choose your programming language"
+
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload  = function() {
         var jsonResponse = JSON.parse(xhr.responseText);
-        console.log(jsonResponse)
+        responseView = document.getElementById("response");
+        if (jsonResponse["successful"] == true) {
+            responseView.value = "Congrats your code executs smoothly. Press submit to check whether it passes the test cases.";
+        }
+        else {
+            responseView.value = jsonResponse["error_message"];
+        }
      };
     xhr.send(JSON.stringify({
-        user_name: "Mondbaum",
-        user_password: "pass"
+        user_id : user_id,
+        user_code : user_code
     }));
 }
