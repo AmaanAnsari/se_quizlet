@@ -11390,6 +11390,9 @@ hr.divider-light {
   #mainNav .navbar-brand {
     color: rgba(255, 255, 255, 0.7);
   }
+  #mainNav .Logged_in_Text {
+    color: rgba(255, 255, 255, 0.7);
+  }
   #mainNav .navbar-brand:hover {
     color: #fff;
   }
@@ -11412,6 +11415,9 @@ hr.divider-light {
   }
   #mainNav.navbar-shrink .navbar-brand:hover {
     color: #f4623a;
+  }
+  #mainNav.navbar-shrink .Logged_in_Text {
+    color: #212529;
   }
   #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
     color: #212529;
@@ -11545,4 +11551,9 @@ header.masthead h1, header.masthead .h1 {
 
 .run-button{
     margin-left: 6.5%;
+}
+
+.Logged_in_Text{
+    font: "Merriweather Sans";
+    padding-left: 10%;
 }

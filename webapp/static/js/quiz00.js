@@ -27,7 +27,7 @@ template: `
             <div class="container bg-light border rounded-3">
                 <form-textarea-code></form-textarea-code>
                 <form-textarea-response></form-textarea-response>
-                
+
             </div>
         </div>
 
@@ -61,8 +61,9 @@ template: `
 Vue.component('next-button', {
 template: `
     <div class="top-row"
-
-        <button type="button" class="btn btn-outline-success" data-url="test.com" onclick="send_post_with_this(this)">Question Overview</button>
+        <a href="http://193.196.38.26:8000/static/pages/quiz_overview.html">
+            <button type="button" class="btn btn-outline-success" data-url="test.com" onclick="send_post_with_this(this)">Quiz Overview</button>
+        </a>
 	</div>
 `})
 
@@ -82,4 +83,3 @@ template: `
 	  <button type="button" class="btn btn-success" id="submit-btn" onclick="post_test_code();">Submit Code</button>
 	</div>
 `})
-

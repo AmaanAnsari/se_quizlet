@@ -3,21 +3,27 @@ props: ['navid'],
 template: `
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
                 <div class="container px-4 px-lg-5">
-                    <a class="navbar-brand" href="../index.html#page-top">Quizify</a>
+                    <a class="navbar-brand" href="http://193.196.38.26:8000/static/index.html">Quizify</a>
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+                    <div class="Logged_in_Text">User Mondbaum ist aktuell angemeldet</div>
+
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                            <li class="nav-item"><a class="nav-link" href="http://193.196.38.26:8000/static/index.html#about">About</a></li>
+                            <li class="nav-item"><a class="nav-link" href="http://193.196.38.26:8000/static/index.html#services">Services</a></li>
                             <li class="nav-item"><a class="nav-link" href="http://193.196.38.26:8000/static/pages/quiz_overview.html">Quiz Overview</a></li>
                             <li class="nav-item"><a class="nav-link active" href="http://193.196.38.26:8000/static/pages/login-page.html">Login</a></li>
-                            <li class="nav-item"><a class="nav-link active" href="http://193.196.38.26:8000/static/pages/registration-page.html">Register</a></li>
 
                         </ul>
                     </div>
                 </div>
             </nav>
 `})
+
+// Log & Reg zusammengefasst
+// <li class="nav-item"><a class="nav-link active" href="http://193.196.38.26:8000/static/pages/registration-page.html">Register</a></li>
+
 
 Vue.component('footbar', {
 template: `
