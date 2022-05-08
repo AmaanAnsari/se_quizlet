@@ -11,8 +11,8 @@ template: `
                             <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                             <li class="nav-item"><a class="nav-link" href="#references">References</a></li>
                             <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                            <li class="nav-item"><a class="nav-link active" href="../static/pages/login-page.html">Login</a></li>
-                            <li class="nav-item"><a class="nav-link active" href="../static/pages/registration-page.html">Register</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="http://193.196.38.26:8000/static/pages/login-page.html">Login</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="http://193.196.38.26:8000/static/pages/registration-page.html">Register</a></li>
 
 </ul>
                     </div>
