@@ -45,7 +45,11 @@ def db_insert(pUser: User):
             "error" : "There is already a account with this email"
         })
 
-    res = db.insert(jsonable_encoder(pUser))
+    res = db.insert({
+        "user_name" : pUser.user_name,
+        "user_password" : pUser.user_password,
+        "user_scores" : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    })
     return Response(status_code=200)
 
 #Ermöglicht das einloggen - überprüft ob User vorhanden ist und das Passwort stimmt und liefert das zurück
@@ -58,13 +62,29 @@ def db_insert(pAuth: User):
     return "false"
 
 
-# Gibt die Scores eines Users zurück
-@app.get("/user/get/scores/{name}")
-def db_getScores(name):
-    Fruit = Query()
-    for pE in db.search(Fruit.user_name == name):
-        return pE["user_scores"]
 
+# Gibt die Scores eines Users zurück
+@app.get("/user/get/scores/{userName}")
+def db_getScores(userName):
+    Fruit = Query()
+    for pE in db.search(Fruit.user_name == userName):
+        return JSONResponse(status_code=200, content={
+            "scores" : pE["user_scores"]
+        })
+
+class Score(BaseModel):
+    user_name: str
+    riddle_id: int
+    score: float 
+
+@app.post("/user/set/score/")
+def db_getScores(pScore : Score):
+    Fruit = Query()
+    for pE in db.search(Fruit.user_name == pScore.user_name):
+        tmpList = pE["user_scores"]
+        tmpList[pScore.riddle_id] = pScore.score
+        db.update({"user_scores" : tmpList}, Fruit.user_name == pScore.user_name)
+    return Response(status_code=200)
 # @app.get("/search-by/user_id/{id}")
 # def db_searchByUsername():
 #     Fruit = Query()

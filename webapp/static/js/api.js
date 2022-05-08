@@ -32,7 +32,7 @@ function send_post_with_this(pBtn) {
 }
 
 function post_check_code() {
-    user_id = "none";
+    user_id = "invalid";
     user_code = document.getElementById("user-code").value;
     console.log("User entered: " +  user_code);
     language = document.getElementById("language").value;
@@ -64,7 +64,9 @@ function post_check_code() {
 
 
 function post_test_code() {
-    user_id = "none";
+    user_id = getCookie("quizletIsAuthenticated");
+    console.log("user: "+  user_id)
+    if (!user_id) user_id = "invalid"
     user_code = document.getElementById("user-code").value;
     console.log("User entered: " +  user_code);
     language = document.getElementById("language").value;

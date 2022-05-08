@@ -7,6 +7,7 @@ import os
 from typing import Optional
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
+import requests
 
 class CheckSyntaxData(BaseModel):
     user_id : str
@@ -83,6 +84,20 @@ def execute_code(pData : CheckSyntaxData):
 
         count -= 1
         os.remove("output.txt")
+        
+        print(pData.user_id)
+        if (pData.user_id != "invalid"):
+            final_score = 0
+            if(correct_count == 0):
+                final_score = -1
+            else:
+                final_score = round(float(correct_count/count), 2)
+
+            requests.post("http://db:7998/user/set/score/", json={
+                "user_name" : pData.user_id, 
+                "riddle_id" : pData.riddle_id,
+                "score" : final_score
+            })
     except Exception as e:
         resultMSG = str(e)
 

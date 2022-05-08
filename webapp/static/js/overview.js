@@ -17,26 +17,30 @@ window.onload = function() {
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.onload  = function() {
             var jsonResponse = JSON.parse(xhr.responseText);
-            console.log("Authenticaten was: " + jsonResponse)
-            return
-            if (jsonResponse == "false") {
-                document.getElementById("output-field").innerHTML  = "Wrong Credentials, try again!"
+            console.log("Scores" + jsonResponse)
+
+            
+            for (let i = 1; i < 6; i++) {
+                // console.log(i)
+                obj = document.getElementById("entry-" + i);
+                // console.log(obj)
+                objTxt = obj.innerHTML;
+                console.log(objTxt)
+                console.log(jsonResponse["scores"][i])
+                if(jsonResponse["scores"][i] == -1) {
+                    obj.innerHTML = objTxt + " (tried, but failed)";
+                }
+                else if(jsonResponse["scores"][i] != 0) {
+                    obj.innerHTML = objTxt + " (done, " + (jsonResponse["scores"][i]*100) + "%)"; 
+                    
+                }
             }
-            else{
-                // document.cookie = "quizletIsAuthenticated=" + user_name + "; SameSite=None"
-                document.getElementById("output-field").innerHTML  = "Success, you'll be redirected!"
-                setCookie("quizletIsAuthenticated", user_name, 1)
-                console.log(getCookie("quizletIsAuthenticated"))
-                window.location.replace("../pages/quiz.html")
-            }
-     };
-    xhr.send();
+           
+        };
+        xhr.send();
     }
     else {
         tmpContent = document.getElementById("overview_header").innerHTML
         document.getElementById("overview_header").innerHTML = tmpContent + " (not logged in)"
     }
-    
-    
-    
 }
