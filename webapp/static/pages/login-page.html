@@ -38,9 +38,9 @@
 
     <div class="login-page">
     <div class="form">
-      <form class="login-form">
+      <form class="login-form" onsubmit="return false;">
           <p class="login-header">
-            <strong>Login</strong>
+            <strong id="output-field">Login</strong>
           </p>
         <input id="input_email" type="text" placeholder="E-Mail">
         <input id="input_password" type="password" placeholder="Password">
@@ -50,6 +50,5 @@
     </div>
     <button class="close_login" onclick="window.location.href = '../index.html';">X</button>
     </div>
-<!-- >>>>>>> b4b39aa51084f7d5f7e51b418df426591a0f3949 -->
   </body>
 </html>

@@ -6,10 +6,23 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.encoders import jsonable_encoder
 import json
+from fastapi.middleware.cors import CORSMiddleware
 
 db = TinyDB('/data/db.json')
 
 app = FastAPI()
+
+origins = [
+    "*"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class User(BaseModel):
     user_name: str
@@ -31,7 +44,8 @@ def db_insert(pAuth: Authentication):
     for pE in db.search(Fruit.user_name == pAuth.user_name):
         if pE["user_password"] == pAuth.user_password:
             return "true"
-        return "false"
+    return "false"
+
 
 @app.get("/user/get/scores/{name}")
 def db_getScores():

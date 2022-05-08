@@ -89,23 +89,57 @@ function post_test_code() {
 
 function post_user_db() {
     console.log("ausgeführt")
-    return
+    
     user_name = document.getElementById("input_email").value;
     console.log("User entered: " +  user_name);
     user_password = document.getElementById("input_password").value;
     console.log("User choose: " + user_password)
 
-    url = window.location.hostname + ":7998" + "/user/login"
+    url = "http://" + window.location.hostname + ":7998" + "/user/login"
     console.log("url: " + url)
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload  = function() {
         var jsonResponse = JSON.parse(xhr.responseText);
-        console.log(jsonResponse)
+        console.log("Authenticaten was: " + jsonResponse)
+        if (jsonResponse == "false") {
+            document.getElementById("output-field").innerHTML  = "Wrong Credentials, try again!"
+        }
+        else{
+            // document.cookie = "quizletIsAuthenticated=" + user_name + "; SameSite=None"
+            document.getElementById("output-field").innerHTML  = "Success, you'll be redirected!"
+            setCookie("quizletIsAuthenticated", user_name, 1)
+            console.log(getCookie("quizletIsAuthenticated"))
+            window.location.replace("../pages/quiz.html")
+        }
+        
+        
+
      };
     xhr.send(JSON.stringify({
         user_name : user_name,
         user_password : user_password
     }));
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
 }
