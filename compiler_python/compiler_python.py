@@ -16,6 +16,7 @@ class CheckSyntaxData(BaseModel):
 teams=[]
 app = FastAPI()
 
+# Kompiliert den im Request Body gesendeten Code 
 @app.post("/compile-code")
 def compile_code(pData : CheckSyntaxData):
     error_msg = ""
@@ -32,6 +33,7 @@ def compile_code(pData : CheckSyntaxData):
         "checked_user_code" : pData.user_code
     }
 
+# Führt den im Request Body gesendeten Code aus. Überprüft den Output in der TXT Datei mit der Lösung und gibt zurück, welche Testfälle bestanden wurden und welche nicht
 @app.post("/execute-code")
 def execute_code(pData : CheckSyntaxData):
     resultMSG = ""
@@ -99,6 +101,7 @@ def execute_code(pData : CheckSyntaxData):
         "checked_user_code" : user_code
     }
 
+# Readyprobe (für debugging verwendet)
 @app.get("/ready-probe")
 def compile_code():
     # // Compile Code

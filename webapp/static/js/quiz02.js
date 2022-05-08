@@ -37,7 +37,7 @@ Vue.component('question-description', {
 template: `
 <div>
     <p>
-        <strong>Nested Loops</strong>
+        <strongid="riddle-headline" data-riddle-id="2">Nested Loops</strong>
     </p>
     <p>
         Given a string, <strong>S</strong>, of length <strong>N</strong> that is indexed from <strong>0</strong> to <strong>N - 1</strong>, print its even-indexed and odd-indexed characters as <strong>2</strong> space-separated strings on a single line (see the Sample below for more detail).

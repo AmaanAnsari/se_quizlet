@@ -37,7 +37,7 @@ Vue.component('question-description', {
 template: `
 <div>
     <p>
-        <strong>Conditional Statements</strong>
+        <strong id="riddle-headline" data-riddle-id="3">Conditional Statements</strong>
     </p>
     <p>
         Given an integer, <strong>n</strong>, perform the following conditional actions:

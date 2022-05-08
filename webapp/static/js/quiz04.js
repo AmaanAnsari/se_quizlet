@@ -37,7 +37,7 @@ Vue.component('question-description', {
 template: `
 <div>
     <p>
-        <strong>Arrays</strong>
+        <strong id="riddle-headline" data-riddle-id="4">Arrays</strong>
     </p>
     <p>
         Given an array, <strong>A</strong>, of <strong>N</strong> integers, print <strong>A</strong>'s elements in reverse order as a single line of space-separated numbers.

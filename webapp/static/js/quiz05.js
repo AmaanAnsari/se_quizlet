@@ -37,7 +37,7 @@ Vue.component('question-description', {
 template: `
 <div>
     <p>
-        <strong>The Fibonacci Sequence</strong>
+        <strong id="riddle-headline" data-riddle-id="5">The Fibonacci Sequence</strong>
     </p>
     <p>The Fibonacci sequence appears in nature all around us, in the arrangement of seeds in a sunflower and the spiral of a nautilus for example. </p>
 

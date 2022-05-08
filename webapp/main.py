@@ -24,6 +24,7 @@ def home():
      return "Welcome, go to /static to see the real thing :D"
      requests.post()
 
+# Leitet die Anfrage für einen Syntax Check in Python an den Pythoncompiler weiter
 @app.post("/user-check-syntax/{language}")
 async def check_syntax(request: Request, language: str):
     if language == "python":
@@ -32,6 +33,7 @@ async def check_syntax(request: Request, language: str):
         return resp.json()
     return "Wrong language"
 
+# Leitet die Anfrage zum ausführen des Codes und überprüfen der Testfälle an den Pythoncompiler weiter
 @app.post("/user-execute-code/{language}")
 async def check_syntax(request: Request, language: str):
     if language == "python":

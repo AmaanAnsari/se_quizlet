@@ -29,10 +29,7 @@ class User(BaseModel):
     user_name: str
     user_password: str
 
-class Authentication(BaseModel):
-    user_name: str
-    user_password: str
-
+#Schreibt den neuen User mit Username und Passwort in die Datenbank
 @app.post("/user/signup")
 def db_insert(pUser: User):
 
@@ -51,8 +48,9 @@ def db_insert(pUser: User):
     res = db.insert(jsonable_encoder(pUser))
     return Response(status_code=200)
 
+#Ermöglicht das einloggen - überprüft ob User vorhanden ist und das Passwort stimmt und liefert das zurück
 @app.post("/user/login", status_code=200)
-def db_insert(pAuth: Authentication):
+def db_insert(pAuth: User):
     Fruit = Query()
     for pE in db.search(Fruit.user_name == pAuth.user_name):
         if pE["user_password"] == pAuth.user_password:
@@ -60,11 +58,12 @@ def db_insert(pAuth: Authentication):
     return "false"
 
 
+# Gibt die Scores eines Users zurück
 @app.get("/user/get/scores/{name}")
 def db_getScores():
     Fruit = Query()
     for pE in db.search(Fruit.user_name == name):
-        return pE[user_scores]
+        return pE["user_scores"]
 
 # @app.get("/search-by/user_id/{id}")
 # def db_searchByUsername():
