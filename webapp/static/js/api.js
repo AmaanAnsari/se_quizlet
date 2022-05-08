@@ -61,6 +61,8 @@ function post_check_code() {
     }));
 }
 
+
+
 function post_test_code() {
     user_id = "none";
     user_code = document.getElementById("user-code").value;
@@ -87,7 +89,7 @@ function post_test_code() {
     }));
 }
 
-function post_user_db() {
+function post_user_db(pBtn) {
     console.log("ausgeführt")
     
     user_name = document.getElementById("input_email").value;
@@ -95,7 +97,8 @@ function post_user_db() {
     user_password = document.getElementById("input_password").value;
     console.log("User choose: " + user_password)
 
-    url = "http://" + window.location.hostname + ":7998" + "/user/login"
+    url_end = pBtn.getAttribute("data-url")
+    url = "http://" + window.location.hostname + ":7998" + url_end
     console.log("url: " + url)
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
@@ -116,6 +119,32 @@ function post_user_db() {
         
         
 
+     };
+    xhr.send(JSON.stringify({
+        user_name : user_name,
+        user_password : user_password
+    }));
+}
+
+function post_signup(pBtn) {
+    console.log("ausgeführt")
+    
+    user_name = document.getElementById("input_email").value;
+    console.log("User entered: " +  user_name);
+    user_password = document.getElementById("input_password").value;
+    console.log("User choose: " + user_password)
+
+    url_end = pBtn.getAttribute("data-url")
+    url = "http://" + window.location.hostname + ":7998" + url_end
+    console.log("url: " + url)
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload  = function() {
+        var jsonResponse = JSON.parse(xhr.responseText);
+        console.log("Authenticaten was: " + jsonResponse)
+        document.getElementById("output-field").innerHTML  = "Thanks for signing up. You'll be redirected to login"
+        window.location.replace("../pages/login-page.html")
      };
     xhr.send(JSON.stringify({
         user_name : user_name,
