@@ -69,9 +69,9 @@ def execute_code(pData : CheckSyntaxData):
         correct_count = 0
         while True:
             count += 1
-            solution_line = str(solution.readline())
-            user_line = str(user.readline())
-            inputFile_line = str(inputFile.readline())
+            solution_line = str(solution.readline()).replace("\n", "")
+            user_line = str(user.readline()).replace("\n", "")
+            inputFile_line = str(inputFile.readline()).replace("\n", "")
 
             if not solution_line and not user_line:
                 break
@@ -108,7 +108,7 @@ def execute_code(pData : CheckSyntaxData):
         else:
             resultMSG = "There are still some mistakes. You passed " + str(correct_count) + " from " + str(count) + " Tests\n\n"
         for pE in resDict:
-            resultMSG= resultMSG + resDict[pE] + "\n"
+            resultMSG= resultMSG + resDict[pE] + "\n\n"
    
     return { 
         "result_type" : "execute",

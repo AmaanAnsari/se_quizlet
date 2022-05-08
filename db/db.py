@@ -82,13 +82,10 @@ def db_getScores(pScore : Score):
     Fruit = Query()
     for pE in db.search(Fruit.user_name == pScore.user_name):
         tmpList = pE["user_scores"]
-        tmpList[pScore.riddle_id] = pScore.score
-        db.update({"user_scores" : tmpList}, Fruit.user_name == pScore.user_name)
+        if (pScore.score > tmpList[pScore.riddle_id]):
+            tmpList[pScore.riddle_id] = pScore.score
+            db.update({"user_scores" : tmpList}, Fruit.user_name == pScore.user_name)
     return Response(status_code=200)
-# @app.get("/search-by/user_id/{id}")
-# def db_searchByUsername():
-#     Fruit = Query()
-#     return db.search(Fruit.user_id == id)
 
 @app.get("/ready-probe")
 def compile_code():
