@@ -127,7 +127,7 @@ function post_user_db(pBtn) {
             document.getElementById("output-field").innerHTML  = "Success, you'll be redirected!"
             setCookie("quizletIsAuthenticated", user_name, 1)
             console.log(getCookie("quizletIsAuthenticated"))
-            window.location.replace("../pages/quiz.html")
+            window.location.replace("http://193.196.38.26:8000/static/pages/quiz_overview.html")
         }
         
         
