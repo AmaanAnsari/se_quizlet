@@ -96,3 +96,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.close_login{
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: white;
+    border-width: 2px;
+    border-color: grey;
+}

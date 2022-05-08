@@ -6,7 +6,7 @@ window.onload = function() {
 function next_question() {
     var d = document.getElementById("questionPane");
     console.log(d)
-    
+
     d.setAttribute("src", "../js/quiz04.js");
     location.reload()
 }
@@ -38,7 +38,7 @@ function post_check_code() {
     language = document.getElementById("language").value;
     url = "/user-check-syntax/" + language
     console.log("User choose: " + url)
-    
+
     responseView = document.getElementById("response");
     if (language == "invalid") responseView.value = "You forgot to choose your programming language"
 
@@ -69,7 +69,7 @@ function post_test_code() {
     url = "/user-execute-code/" + language
     console.log("User choose: " + url)
     riddle_id = document.getElementById("riddle-headline").getAttribute("data-riddle-id")
-    
+
     responseView = document.getElementById("response");
     if (language == "invalid") responseView.value = "You forgot to choose your programming language"
 
@@ -94,7 +94,7 @@ function post_user_db() {
     console.log("User entered: " +  user_name);
     user_password = document.getElementById("input_password").value;
     console.log("User choose: " + user_password)
-    
+
     url = window.location.hostname + ":7998" + "/user/login"
     console.log("url: " + url)
     var xhr = new XMLHttpRequest();
@@ -109,4 +109,3 @@ function post_user_db() {
         user_password : user_password
     }));
 }
-

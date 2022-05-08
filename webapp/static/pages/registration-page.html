@@ -1,7 +1,7 @@
 
 
 
-<link href="../css/login.css" rel="stylesheet" />
+<!-- <link href="../css/login.css" rel="stylesheet" />
 
 
 <div class="registration-page">
@@ -17,12 +17,36 @@
       <p class="message">Already registered? <a href="../pages/login-page.html">Login</a></p>
     </form>
     </div>
-</div>
+    <button class="close_login" onclick="window.location.href = '../index.html';">X</button>
+</div> -->
 
 
+<html class=" scawlwc idc0_339">
+ <head>
+   <script src="../js/api.js"></script>
+   <link href="../css/login.css" rel="stylesheet">
+ </head>
+ <body class="vsc-initialized">
 
-<script>
-    $('.message a').click(function(){
-       $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-    });
-</script>
+    <script src="../js/api.js"></script>
+
+
+   <div class="registration-page">
+   <div class="form">
+     <form class="registration-form">
+         <p class="registration-header">
+           <strong>Login</strong>
+         </p>
+       <input id="input_email" type="text" placeholder="Username">
+       <input id="input_email" type="text" placeholder="E-Mail">
+       <input id="input_password" type="password" placeholder="Password">
+       <!-- HIER VERMUTLICH ANDERES EVENT -->
+       <button id="login-btn" onclick="post_user_db()">create</button>
+       <p class="message">Already registered? <a href="../pages/login-page.html">Login</a></p>
+     </form>
+   </div>
+   <button class="close_login" onclick="window.location.href = '../index.html';">X</button>
+   </div>
+<!-- >>>>>>> b4b39aa51084f7d5f7e51b418df426591a0f3949 -->
+ </body>
+</html>
