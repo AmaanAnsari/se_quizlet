@@ -142,10 +142,21 @@ function post_signup(pBtn) {
     xhr.open("POST", url, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload  = function() {
-        var jsonResponse = JSON.parse(xhr.responseText);
-        console.log("Authenticaten was: " + jsonResponse)
-        document.getElementById("output-field").innerHTML  = "Thanks for signing up. You'll be redirected to login"
-        window.location.replace("../pages/login-page.html")
+
+        console.log(xhr.responseText)
+
+        if (xhr.status == 200) {
+            document.getElementById("output-field").innerHTML  = "Thanks for signing up. You'll be redirected to login"
+            setTimeout(() => {
+                window.location.replace("../pages/login-page.html")
+             }, 3000)
+            
+        }
+        else{
+            var jsonResponse = JSON.parse(xhr.responseText);
+            document.getElementById("output-field").innerHTML  = jsonResponse["error"]
+        }
+        
      };
     xhr.send(JSON.stringify({
         user_name : user_name,

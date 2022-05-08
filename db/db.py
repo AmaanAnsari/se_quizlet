@@ -3,6 +3,7 @@ from typing import Optional
 import uvicorn
 from tinydb import TinyDB, Query
 from fastapi import FastAPI, Response
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from fastapi.encoders import jsonable_encoder
 import json
@@ -27,7 +28,6 @@ app.add_middleware(
 class User(BaseModel):
     user_name: str
     user_password: str
-    user_scores: Optional[dict] = {}
 
 class Authentication(BaseModel):
     user_name: str
@@ -35,6 +35,19 @@ class Authentication(BaseModel):
 
 @app.post("/user/signup")
 def db_insert(pUser: User):
+
+    if pUser.user_name == "" or pUser.user_password == "":
+        return JSONResponse(status_code=406, content={
+            "error" : "Username or Password can not be empty!"
+        })
+
+    Fruit = Query()
+    print(db.search(Fruit.user_name == pUser.user_name))
+    if db.search(Fruit.user_name == pUser.user_name) != []:
+        return JSONResponse(status_code=406, content={
+            "error" : "There is already a account with this email"
+        })
+
     res = db.insert(jsonable_encoder(pUser))
     return Response(status_code=200)
 
