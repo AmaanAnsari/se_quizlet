@@ -38,8 +38,7 @@ Vue.component('execution-view', {
 template: `
   <div class="col-md-3">
   <div class="bg-light border rounded-3">
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  <br><br><br><br><br><br><br><br><br><br>
+    <form-textarea-submit-response></form-textarea-submit-response>
 
   </div>
   </div>

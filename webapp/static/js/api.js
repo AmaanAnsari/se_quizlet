@@ -80,7 +80,8 @@ function post_test_code() {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload  = function() {
         var jsonResponse = JSON.parse(xhr.responseText);
-        console.log(jsonResponse)
+        submitView = document.getElementById("submitResponse")
+        submitView.value = jsonResponse["result"]
      };
     xhr.send(JSON.stringify({
         user_id : user_id,
