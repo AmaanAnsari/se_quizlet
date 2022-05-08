@@ -43,8 +43,7 @@ template: `
         In this challenge, we're going to use loops to help us do some simple math.
     </p>
     <p>
-        Given an integer <strong>N</strong>, print its first <strong>10</strong> multiples. Each multiple <strong>N x i</strong> (where 1 <= i <= 10) should be printed on a new line in the
-        form: N x i = result.
+        Given an integer <strong>N</strong>, print its first <strong>5</strong> multiples. Each multiple <strong>N x i</strong> (where 1 <= i <= 5) should be sperated by commas.
     </p>
 </div>
 `})
@@ -54,7 +53,7 @@ Vue.component('question-examples', {
 template: `
 <div>
     <p>&nbsp;</p>
-    <p><strong>Example:</strong></p>
+    <p><strong>Example 1:</strong></p>
 
     <p>
     <pre><strong>Input:</strong>
@@ -62,16 +61,18 @@ template: `
 
     <p>
     <pre><strong>Output:</strong>
-    3 x 1 = 3
-    3 x 2 = 6
-    3 x 3 = 9
-    3 x 4 = 12
-    3 x 5 = 15
-    3 x 6 = 18
-    3 x 7 = 21
-    3 x 8 = 24
-    3 x 9 = 27
-    3 x 10 = 30
+    3, 6, 9, 12, 15
+    </pre></p>
+
+    <p><strong>Example 2:</strong></p>
+
+    <p>
+    <pre><strong>Input:</strong>
+    5</pre></p>
+
+    <p>
+    <pre><strong>Output:</strong>
+    5, 10, 15, 20, 25
     </pre></p>
 </div>
 `})
