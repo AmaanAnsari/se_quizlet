@@ -44,7 +44,7 @@
           </p>
         <input id="input_email" type="text" placeholder="E-Mail">
         <input id="input_password" type="password" placeholder="Password">
-        <button id="login-btn" onclick="post_user_db()">login</button>
+        <button data-url="/user/login" id="submit-btn" onclick="post_user_db(this)">login</button>
         <p class="message">Not registered? <a href="../pages/registration-page.html">Create an account</a></p>
       </form>
     </div>

@@ -2,7 +2,7 @@
 from typing import Optional
 import uvicorn
 from tinydb import TinyDB, Query
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 from pydantic import BaseModel
 from fastapi.encoders import jsonable_encoder
 import json
@@ -33,10 +33,10 @@ class Authentication(BaseModel):
     user_name: str
     user_password: str
 
-@app.post("/user/signup", status_code=200)
+@app.post("/user/signup")
 def db_insert(pUser: User):
     res = db.insert(jsonable_encoder(pUser))
-    return "none"
+    return Response(status_code=200)
 
 @app.post("/user/login", status_code=200)
 def db_insert(pAuth: Authentication):

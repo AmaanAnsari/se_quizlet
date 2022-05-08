@@ -33,15 +33,14 @@
 
    <div class="registration-page">
    <div class="form">
-     <form class="registration-form">
+     <form class="registration-form" onsubmit="return false;">
          <p class="registration-header">
-           <strong>Login</strong>
+           <strong>SignUp</strong>
          </p>
-       <input id="input_email" type="text" placeholder="Username">
        <input id="input_email" type="text" placeholder="E-Mail">
        <input id="input_password" type="password" placeholder="Password">
        <!-- HIER VERMUTLICH ANDERES EVENT -->
-       <button id="login-btn" onclick="post_user_db()">create</button>
+       <button data-url="/user/signup" id="login-btn" onclick="post_user_db(this)">create</button>
        <p class="message">Already registered? <a href="../pages/login-page.html">Login</a></p>
      </form>
    </div>
