@@ -2,19 +2,22 @@
 <html lang="en">
 <head>
     <link href="../css/quiz_style.css" rel="stylesheet" />
+    <script src="../js/api.js"></script>
+    <script src="../js/overview.js"></script>
+    
 </head>
 <body>
     <main>
-        <p class="overview_header">
+        <p class="overview_header" id="overview_header">
             Quiz Overview
         </p>
 
         <ol>
-            <li class=""><a href="quiz01.html">Loops</a></li>
-            <li class=""><a href="quiz02.html">Nested Loops</a></li>
-            <li class=""><a href="quiz03.html">Conditional Statements</a></li>
-            <li class=""><a href="quiz04.html">Arrays</a></li>
-            <li class=""><a href="quiz05.html">The Fibonacci Sequence</a></li>
+            <li id="entry-1"><a href="quiz01.html">Loops</a></li>
+            <li id="entry-2"><a href="quiz02.html">Nested Loops</a></li>
+            <li id="entry-3"><a href="quiz03.html">Conditional Statements</a></li>
+            <li id="entry-4"><a href="quiz04.html">Arrays</a></li>
+            <li id="entry-5"><a href="quiz05.html">The Fibonacci Sequence</a></li>
         </ol>
     </main>
     <button class="close_quiz_overview" onclick="window.location.href = '../index.html';">X</button>

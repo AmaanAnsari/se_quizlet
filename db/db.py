@@ -60,7 +60,7 @@ def db_insert(pAuth: User):
 
 # Gibt die Scores eines Users zurück
 @app.get("/user/get/scores/{name}")
-def db_getScores():
+def db_getScores(name):
     Fruit = Query()
     for pE in db.search(Fruit.user_name == name):
         return pE["user_scores"]
