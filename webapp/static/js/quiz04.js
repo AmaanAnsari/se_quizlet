@@ -44,8 +44,7 @@ template: `
     </p>
 
     <p><strong>Input Format</strong></p>
-    <p>The first line contains an integer, <strong>N</strong> (the size of our array).</p>
-    <p>The second line contains <strong>N</strong> space-separated integers that describe array <strong>A</strong>'s elements.</p>
+    <p>The first line contains <strong>N</strong> space-separated integers that describe array <strong>A</strong>'s elements.</p>
 </div>
 
 `})
@@ -55,11 +54,10 @@ Vue.component('question-examples', {
 template: `
 <div>
     <p>&nbsp;</p>
-    <p><strong>Example 1:</strong></p>
+    <p><strong>Example:</strong></p>
 
     <p>
     <pre><strong>Input:</strong>
-    5
     2 2 3 4 6</pre></p>
 
     <p>
