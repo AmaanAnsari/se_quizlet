@@ -80,6 +80,7 @@ def execute_code(pData : CheckSyntaxData):
                 resDict[count] = "Test " + str(count) + " | FAIL | Input: '" + inputFile_line + "' | Output Solution: '" + solution_line + "' | Your Output: '" + user_line + "'"
 
         count -= 1
+        os.remove("output.txt")
     except Exception as e:
         resultMSG = str(e)
 
