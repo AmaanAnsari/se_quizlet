@@ -6,7 +6,7 @@ template: `
                     <a class="navbar-brand" href="http://193.196.38.26:8000/static/index.html">Quizify</a>
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
-                    <div class="Logged_in_Text">User Mondbaum ist aktuell angemeldet</div>
+                    <div id="userString" class="Logged_in_Text"></div>
 
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ms-auto my-2 my-lg-0">

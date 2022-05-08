@@ -1,7 +1,17 @@
 
 window.onload = function() {
     //yourFunction(param1, param2);
-  };
+    obj = document.getElementById("userString");
+    console.log(obj)
+    if(obj && getCookie("quizletIsAuthenticated")) {
+        objText = "User " + getCookie("quizletIsAuthenticated") + " ist aktuell angemeldet";
+        obj.innerHTML = objText
+    }
+    else {
+        objText = "kein User ist aktuell angemeldet"
+        obj.innerHTML = objText
+    }
+};
 
 function next_question() {
     var d = document.getElementById("questionPane");
