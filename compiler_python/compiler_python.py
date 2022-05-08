@@ -34,55 +34,67 @@ def compile_code(pData : CheckSyntaxData):
 
 @app.post("/execute-code")
 def execute_code(pData : CheckSyntaxData):
-    error_msg = ""
-    resultB = ""
+    resultMSG = ""
     user_code = pData.user_code
     resDict = {}
+
+    solution = open("/quiz/" + str(pData.riddle_id) + "/solution.txt", "r")
+
+    inputFilePath = "/quiz/" + str(pData.riddle_id) + "/input.txt"
+    inputFile = open(inputFilePath, "r")
+    
+    userInputFile = open("input.txt", "w")
+    userInputFile.write(inputFile.read())
+    userInputFile.close()
+    inputFile.close()
     try:
         
         # webapp_path = "/"
         # riddles_path = "/riddles/"
 
-        # os.popen('cp ' + riddles_path + pData.riddle_id + "/input.txt " + webapp_path + "/input.txt") 
+        #os.popen('cp ' + inputFilePath + "/code/input.txt") 
         
         codeObejct = compile(user_code, "<string>", 'exec')
         exec(codeObejct)
 
-        #filename = os.path.join(os.path.dirname(__file__), "solution-" + pData.riddle_id + ".txt")
-        filename = "/root/root/code/solution-1.txt"
-        solution = open(filename, "r")
-        user = open("output.txt", "r")
-        count = 0
+        if not os.path.exists("output.txt"):
+            raise Exception("You did not write your output into the 'output.txt' file. Please correct your mistake and try again.") 
         
+        user = open("output.txt", "r")
+        inputFile = open(inputFilePath, "r")
+        count = 0
+        correct_count = 0
         while True:
             count += 1
-            solution_line = solution.readline()
-            user_line = user.readline()
-
-            resDict[count] = "Test " + str(count) + " with input '" + str(solution_line) + "': "
-            if(solution_line == user_line):
-                resDict[count] += "Successful"
-            else:
-                resDict[count] += "Error! Your output was: " + str(user_line)
-
+            solution_line = str(solution.readline())
+            user_line = str(user.readline())
+            inputFile_line = str(inputFile.readline())
 
             if not solution_line and not user_line:
                 break
+            
+            if(solution_line == user_line):
+                correct_count += 1
+                resDict[count] = "Test " + str(count) + " | pass (Input: '" + inputFile_line  + "')"
+            else:
+                resDict[count] = "Test " + str(count) + " | FAIL | Input: '" + inputFile_line + "' | Output Solution: '" + solution_line + "' | Your Output: '" + user_line + "'"
 
-    except Exception:
-        error_msg = traceback.format_exc()
+        count -= 1
+    except Exception as e:
+        resultMSG = str(e)
 
     
-    resultMSG = "Well done, your code runs :D\n"
-
-    for pE in resDict:
-        resultMSG+=pE + "\n"
-    
+    if resultMSG == "":
+        if count == correct_count:
+            resultMSG = "Well done, you passed all test :D\n\n"
+        else:
+            resultMSG = "There are still some mistakes. You passed " + str(correct_count) + " from " + str(count) + " Tests\n\n"
+        for pE in resDict:
+            resultMSG= resultMSG + resDict[pE] + "\n"
+   
     return { 
         "result_type" : "execute",
-        "successful" : error_msg == "",
         "result" : resultMSG,
-        "error_message": error_msg,
         "checked_user_code" : user_code
     }
 

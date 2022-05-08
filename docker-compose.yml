@@ -17,6 +17,8 @@ services:
       - "7999"
     networks:
       - backend_network
+    volumes:
+      - "./data/riddles/:/quiz:rw"
 
   db:
     build: 

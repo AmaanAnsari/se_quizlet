@@ -132,7 +132,7 @@ Vue.component('form-textarea-response', {
     template:
     `
     <div class="form-group">
-        <textarea readonly class="form-control" id="response" rows=10 type="text" placeholder="Enter your code here..."></textarea>
+        <textarea readonly class="form-control" id="response" rows=10 type="text" placeholder="Click run! Errors will be displayed here"></textarea>
     </div>
     `
     })
@@ -142,6 +142,15 @@ Vue.component('form-textarea', {
     `
     <div class="form-group">
         <textarea class="form-control" id="message" rows=20 type="text" placeholder="Enter your code here..."></textarea>
+    </div>
+    `
+    })
+
+Vue.component('form-textarea-submit-response', {
+    template:
+    `
+    <div class="form-group">
+        <textarea readonly class="form-control" id="submitResponse" rows=30 type="text" placeholder="Press Submit! Your Test results will be displayed here."></textarea>
     </div>
     `
     })
