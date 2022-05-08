@@ -52,7 +52,7 @@ template: `
       <select id="language" class="dropdown">
         <option value="invalid">Select Programming Language ...</option>
         <option value="python" selected="selected">Python3</option>
-        <option value="javascript">JavaScript</option>
+        <option value="java">Java</option>
       </select>
     </form>
 `})
